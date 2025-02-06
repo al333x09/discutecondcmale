@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Profile</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #fafafa;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+        .profile-image {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .profile-image img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px ;
+        }
+        .profile-info {
+            text-align: center;
+        }
+        .profile-info h1 {
+            margin: 10px 0;
+            font-size: 24px;
+        }
+        .profile-info h4 {
+            margin: 5px 0;
+            color: #888;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat .number {
+            font-weight: bold;
+            display: block;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .button-container button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button-container button:hover {
+            background-color: #0056b3;
+        }
+        .post {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+            background-color: white;
+        }
+        .post-header {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .post-header img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .post-header .username {
+            font-weight: bold;
+        }
+        .post img {
+            width: 100%;
+        }
+        .post-actions {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+        .post-actions button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+        .post-actions button:hover {
+            transform: scale(1.1);
+        }
+        .post-actions button img {
+            width: 24px;
+            height: 24px;
+            margin-right: 5px;
+        }
+        .post-details {
+            padding: 10px;
+        }
+        .post-details .likes {
+            font-weight: bold;
+        }
+        .post-details .caption {
+            margin-top: 5px;
+        }
+        @media (max-width: 600px) {
+            .stats, .button-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .stats .stat, .button-container button {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-image">
+            <img src="images/profile(1).jpg" class="foto-de-perfil" alt="profile picture">
+        </div>
+        <div class="profile-info">
+            <h1>dcm_ale</h1>
+            <h4>Decima Alexis</h4>
+        </div>
+        <div class="stats">
+            <div class="stat">
+                <span class="number">150</span>
+                <span class="label">Posts</span>
+            </div>
+            <div class="stat">
+                <span class="number">446.863</span>
+                <span class="label">Followers</span>
+            </div>
+            <div class="stat">
+                <span class="number">789</span>
+                <span class="label">Following</span>
+            </div>
+            <div class="stat">
+                <span class="number">1.234.234</span>
+                <span class="label">Likes</span>
+            </div>
+        </div>
+        <div class="button-container">
+            <button onclick="window.location.href='index2.html'"> Mensajes
+            </button>
+            <button onclick="window.location.href='index3.html'">
+                About Me
+            </button>
+            <button onclick="window.location.href='index4.html'">
+             Contact Me
+            </button>
+        </div>
+        <div class="post">
+            <div class="post-header">
+                <img src="images/profile(1).jpg" alt="Avatar" class="avatar">
+                <span class="username">dcm_ale</span>
+            </div>
+            <img src="images/post1.jpg" alt="imagen del post">
+            <div class="post-actions">
+                <button class="like-button"><img src="images/like.png" alt="Like">❤️</button>
+                <button class="comment-button"><img src="images/comment.png" alt="Comment">💬</button>
+                <button class="share-button"><img src="images/share.png" alt="Share">🔗</button>
+            </div>
+            <div class="post-details">
+                <span class="likes">1.234.234 me gusta</span>
+                <p class="caption">Descripcion de la imagen #hashtags #menciones</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelector('.like-button').addEventListener('click', function() {
+            alert('You liked the post!');
+        });
+        document.querySelector('.comment-button').addEventListener('click', function() {
+            alert('You commented on the post!');
+        });
+        document.querySelector('.share-button').addEventListener('click', function() {
+            alert('You shared the post!');
+        });
+    </script>
+</body>
+</html>

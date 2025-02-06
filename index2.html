@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaz de Mensajes</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        header {
+            background-color: #1f1f1f;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 80vh;
+            max-width: 600px;
+            margin: auto;
+            background-color: #1f1f1f;
+            border: 1px solid #333;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .chat-header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .chat-header img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+        }
+        .message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 70%;
+        }
+        .message.sent {
+            background-color: #4caf50;
+            color: white;
+            align-self: flex-end;
+        }
+        .message.received {
+            background-color: #333;
+            color: white;
+            align-self: flex-start;
+        }
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #333;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 20px;
+            margin-right: 10px;
+            background-color: #2c2c2c;
+            color: white;
+        }
+        .chat-input button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .chat-input button:hover {
+            background-color: #45a049;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .button-container button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+        }
+        .button-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Interfaz de Mensajes</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index2.html">Chat</a></li>
+                <li><a href="index3.html">About</a></li>
+                <li><a href="index4.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="chat-container">
+            <div class="chat-header">
+                <img src="images/profile(1).jpg" alt="Avatar">
+                <span>Discute con dcm_ale</span>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message received">
+                    <p>¡Hola! ¿Cómo estás?</p>
+                </div>
+                <div class="message sent">
+                    <p>¡Estoy bien, gracias! ¿Y tú?</p>
+                </div>
+                <div class="message received">
+                    <p>¡Todo bien, gracias!</p>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="message-input" placeholder="Escribe un mensaje">
+                <button id="send-button">Enviar</button>
+            </div>
+        </div>
+        <div class="button-container">
+            <button onclick="window.location.href='index.html'">Profile</button>
+            <button onclick="window.location.href='index3.html'">About Me</button>
+            <button onclick="window.location.href='index4.html'">Contact Me</button>
+        </div>
+    </main>
+    <script>
+        const sendButton = document.getElementById('send-button');
+        const messageInput = document.getElementById('message-input');
+        const chatMessages = document.getElementById('chat-messages');
+
+        const responses = [
+            "¡Eso es genial!",
+            "Me alegra saber eso.",
+            "¿Qué has estado haciendo?",
+            "¿Tienes planes para hoy?",
+            "¿Cómo va todo?",
+            "¡Qué bien!",
+            "Cuéntame más.",
+            "¡Interesante!",
+            "a vos te dicen estufa,poque te la tienen que enchufar asi te prendas",
+            "vamos por un traba?,estan de ofertas",
+            "buscate un travesti,haber si asi incas al menos",
+            "la amo a tu señora noma",
+            "a tu jermu,gil",
+            "ni te ama esa,pelotudo",
+            "tienes talento en las venas,ahora solo falta que circule",
+            "me alegro que te hayas definido tu genero,entrega el chiquito meta",
+            "hablemo serio,te encanta el huevo?",
+            "que rica tu jermu",
+            "a tu señora gil",
+            "gay",
+            "sos un puto",
+            "eso es un puto",
+            "a tu señora gil",
+            "hablemos serio,te encanta el huevo?",
+            "que rica tu jermu",
+            "a tu señora gil",
+            "tu eres el mascapito de tu barrio",
+            "a tu mama",
+            "a la tuya gil",
+            "a tu jermu",
+            "a tu señora gil",
+            "hablemos serio,te encanta el huevo?",
+            "que rica tu jermu",
+            "a tu señora gil",
+            "tu eres el mascapito de tu barrio",
+            "forro",
+            "conchudo",
+            "sorete",
+            "trucho",
+            "que paso,no te dan atencion en casa?",
+            "no servi ni pa aka",
+            "igual tengo razon,boludo",
+            "te sentiste insuficiente?",
+            "no te da la nafta?",
+            "te duele la argolla,gil?",
+            "por eso te van a vivir gorreando",
+            "siempre fuiste asi de boludo?",
+            "ya ni solucion tenes gil",
+            "tampoco esperaba menos jajja",
+            
+
+        ];
+    
+
+        sendButton.addEventListener('click', () => {
+            const messageText = messageInput.value;
+            if (messageText.trim() !== "") {
+                addMessage('sent', messageText);
+                messageInput.value = '';
+                setTimeout(() => {
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                    addMessage('received', randomResponse);
+                }, 1000);
+            }
+        });
+
+        function addMessage(type, text) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', type);
+            messageElement.innerHTML = `<p>${text}</p>`;
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    </script>
+</body>
+</html>
